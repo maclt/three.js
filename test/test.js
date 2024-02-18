@@ -41,8 +41,8 @@ controls.target.set(0, 1, 0)
  * @tutorial https://ics.media/tutorial-three/material_variation/
  */
 
-const texture = new THREE.TextureLoader().load('./static/cuctas/Default_Base_Color.png')
-const material = new THREE.MeshToonMaterial({
+const texture = new THREE.TextureLoader().load('../static/cactus/Default_Base_Color.png')
+const material = new THREE.MeshStandardMaterial({
 	map: texture
 });
 
@@ -91,11 +91,16 @@ const material = new THREE.MeshToonMaterial({
 
 const objLoader = new OBJLoader();
 objLoader.load(
-  './static/cuctas/Cactus1.obj',
+  '../static/cactus/Cactus1.obj',
   function(obj){
+		// obj.children[0].material = marterialA
+		// obj.children[1].material = marterialB
+		// obj.children[2].material = marterialC
+
 		obj.children.forEach(child => {
 			child.material = material			
-		})
+		});
+		
     scene.add(obj);
   },
   function (xhr) {
